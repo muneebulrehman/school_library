@@ -25,3 +25,4 @@ class Person < Nameable
 
   private :is_of_age
 end
+
