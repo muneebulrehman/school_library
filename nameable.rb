@@ -1,4 +1,4 @@
-class Nameable 
+class Nameable
   def correct_name
     raise NotImplementedError
   end
@@ -6,6 +6,7 @@ end
 
 class BaseDecorator < Nameable
   attr_accessor :nameable
+
   def initialize(nameable)
     super()
     @nameable = nameable
@@ -24,6 +25,6 @@ end
 
 class TrimmerDecorator < BaseDecorator
   def correct_name
-    @nameable.correct_name[0,10]
+    @nameable.correct_name[0, 10]
   end
 end
