@@ -1,4 +1,5 @@
-class Person
+require relative './nameable.rb'
+class Person < Nameable
   attr_accessor :name, :age
 
   attr_reader :id
@@ -8,6 +9,10 @@ class Person
     @name = name
     @age = age
     @parental_permission = parental_permission
+  end
+
+  def correct_name
+    @name
   end
 
   def of_age?
