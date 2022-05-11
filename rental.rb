@@ -9,7 +9,4 @@ class Rental
     @book.rentals << self
   end
 
-  def show_rental
-    "#{@person.name} #{@book.title}  #{date}"
-  end
 end
