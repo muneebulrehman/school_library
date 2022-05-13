@@ -8,6 +8,7 @@ require './teacher'
 
 class App
   attr_reader :rentals
+
   def initialize()
     @books = []
     @rentals = []
@@ -83,11 +84,13 @@ class App
 
   def create_rental
     p 'Select a book from the following list by number: '
-    @books.each_with_index{ |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
+    @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
     book_id = gets.chomp.to_i
 
     puts 'Select a person from the following list by number'
-    @people.each_with_index { |person, index| puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
+    @people.each_with_index do |person, index| 
+      puts "#{index}) [#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" 
+    end
     person_id = gets.chomp.to_i
 
     print 'Date: '
