@@ -3,7 +3,7 @@ require './nameable'
 class Person < Nameable
   attr_accessor :name, :age
 
-  attr_reader :id, :rentals, :parental_permission
+  attr_reader :id, :rental, :parental_permission
 
   def initialize(age, name = 'Unknown', parental_permission: true)
     super()
@@ -11,7 +11,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parental_permission = parental_permission
-    @rentals = []
+    @rental = []
   end
 
   def correct_name

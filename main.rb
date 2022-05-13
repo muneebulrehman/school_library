@@ -10,6 +10,7 @@ class Main < App
   def start_script
     puts 'Select Option'
     10.times{print  "*="}
+    print "*"
     puts
     until all_options
       input = gets.chomp.to_i
@@ -33,7 +34,6 @@ class Main < App
   end
 
   def options (input)
-    puts "Options is now running"
     case input
     when 1
       @app.list_all_books

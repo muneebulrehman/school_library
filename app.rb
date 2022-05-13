@@ -7,6 +7,7 @@ require './student'
 require './teacher'
 
 class App
+  attr_reader :rentals
   def initialize()
     @books = []
     @rentals = []
@@ -90,7 +91,7 @@ class App
     person_id = gets.chomp.to_i
 
     print 'Date: '
-    date = gets.chomp.to_i
+    date = gets.chomp
 
     rental = Rental.new(date, @books[book_id], @people[person_id])
     @rentals << rental
@@ -99,8 +100,8 @@ class App
   def list_all_rentals
     print 'ID of the person: '
     id = gets.chomp.to_i
-
-    puts "Rentals: "
+    # pp @rentals
+    puts 'Rentals: '
     @rentals.each do |rental|
       if rental.person.id == id
         puts "Peson: #{rental.person.name}  Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
