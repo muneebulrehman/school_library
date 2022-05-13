@@ -9,22 +9,24 @@ require './teacher'
 class App
   def initialize()
     @books = []
-    @rentals =[]
+    @rentals = []
     @people = []
   end
 
   def list_all_books
     return p 'No books found.' if @books.empty?
-    @books.each {|book| p "Book Title: #{book.title}, Author: #{book.author}" }
+
+    @books.each { |book| p "Book Title: #{book.title}, Author: #{book.author}" }
   end
 
   def list_all_people
-     return p 'No people found.' if @books.empty?
-      @people.each {|person| p "Name: #{person.name}, Age: #{person.age} " }
+    return p 'No people found.' if @people.empty?
+
+    @people.each { |person| p "Name: #{person.name}, Age: #{person.age} " }
   end
 
   def create_person
-    puts "Do you want to create a student (1) or a teacher (2)? [Input the number]:"
+    puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]:'
     option = gets.chomp
 
     case option
@@ -33,16 +35,16 @@ class App
     when '2'
       create_teacher
     else
-      p "Enter the valid number"
+      p 'Enter the valid number'
     end
-  end 
+  end
 
   def create_student
-    print "Age: "
+    print 'Age: '
     age = gets.chomp.to_i
-    print "Name: "
+    print 'Name: '
     name = gets.chomp.to_s
-    print "Has parent permission? [Y/N]: "
+    print 'Has parent permission? [Y/N]: '
     parental_permission = gets.chomp.downcase
     case permission
     when 'n'
@@ -52,34 +54,34 @@ class App
       Student.new('classroom', age, name, parental_permission: true)
       @people << student
     end
-    p "Student created successfully"
+    p 'Student created successfully'
   end
 
   def create_teacher
-    print "Enter name of teacher: "
+    print 'Enter name of teacher: '
     name = gets.chomp.to_s
-    print "Enter age: "
+    print 'Enter age: '
     age = gets.chomp.to_i
-    print "Enter Specialization: "
+    print 'Enter Specialization: '
     specialization = gets.chomp.to_s
     teacher = Teacher.new(specialization, age, name)
     @people << teacher
-    p "Teacher created successfully"
+    p 'Teacher created successfully'
   end
 
   def create_book
-    p "To create a new book, Enter: "
-    print "Title: "
+    p 'To create a new book, Enter: '
+    print 'Title: '
     title = gets.chomp.to_s
-    print "Enter the Author's name: "
+    print 'Enter the Author name: '
     author = gets.chomp.to_s
     book = Book.new(title, author)
     @books << book
-    puts "Book created successfully"
+    puts 'Book created successfully'
   end
 
   def create_rental
-    p "Select a book from the following list by number: "
+    p 'Select a book from the following list by number: '
     @books.each_with_index{ |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
     book_id = gets.chomp.to_i
 
@@ -103,7 +105,7 @@ class App
       if rental.person.id == id
         puts "Peson: #{rental.person.name}  Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
       else
-        p "No record found for the selected person"
+        p 'No record found for the selected person'
       end
     end
   end
