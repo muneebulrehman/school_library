@@ -2,22 +2,22 @@ require './app'
 
 class Main < App
   def initialize
+    super()
     @app = App.new
-    start_script()
+    start_script
   end
 
   def start_script
     puts 'Select Option'
     10.times{print  "*="}
     puts
-    until self.all_options
-      self.all_options()
+    until all_options
       input = gets.chomp.to_i
-      if input == '7'
+      if input == 7
         puts 'Thanks for using our app'
         break
       end
-      self.options(input)
+      options(input)
     end
   end
 
@@ -33,19 +33,20 @@ class Main < App
   end
 
   def options (input)
+    puts "Options is now running"
     case input
-    when '1'
-      app.list_all_books
-    when '2'
-      app.list_all_people
-    when '3'
-      app.create_person
-    when '4'
-      app.create_book
-    when '5'
-      app.create_rental
-    when '6'
-      app.list_all_rentals
+    when 1
+      @app.list_all_books
+    when 2
+      @app.list_all_people
+    when 3
+      @app.create_person
+    when 4
+      @app.create_book
+    when 5
+      @app.create_rental
+    when 6
+      @app.list_all_rentals
     else
       puts 'Please enter a num between 1 and 7.'
     end
@@ -53,4 +54,3 @@ class Main < App
 end
 
 main = Main.new
-puts main

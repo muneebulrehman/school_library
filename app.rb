@@ -46,12 +46,12 @@ class App
     name = gets.chomp.to_s
     print 'Has parent permission? [Y/N]: '
     parental_permission = gets.chomp.downcase
-    case permission
+    case parental_permission
     when 'n'
-      Student.new('classroom', age, name, parental_permission: false)
+      student = Student.new('classroom', age, name, parental_permission: false)
       @people << student
     when 'y'
-      Student.new('classroom', age, name, parental_permission: true)
+      student = Student.new('classroom', age, name, parental_permission: true)
       @people << student
     end
     p 'Student created successfully'
