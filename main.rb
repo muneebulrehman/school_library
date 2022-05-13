@@ -1,6 +1,6 @@
 require './app'
 
-class Main << App
+class Main < App
   def initialize
     @app = App.new
     start_script()
@@ -10,6 +10,19 @@ class Main << App
     puts 'Select Option'
     10.times{print  "*="}
     puts
+    until self.all_options
+      self.all_options()
+      input = gets.chomp.to_i
+      if input == '7'
+        puts 'Thanks for using our app'
+        break
+      end
+      self.options(input)
+    end
+  end
+
+  def all_options
+    p
     puts '[1] List all books'
     puts '[2] List all people'
     puts '[3] Create a person'
@@ -33,12 +46,11 @@ class Main << App
       app.create_rental
     when '6'
       app.list_all_rentals
-    when '7'
-      puts "Thank you for using this app!"
-      break
     else
       puts 'Please enter a num between 1 and 7.'
+    end
   end
 end
 
 main = Main.new
+puts main

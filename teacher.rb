@@ -1,4 +1,4 @@
-require relative './person.rb'
+require './person'
 class Teacher < Person
   attr_accessor :specialization
 
